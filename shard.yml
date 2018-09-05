@@ -1,0 +1,14 @@
+name: cryst_glut
+version: 0.1.0
+
+authors:
+  - Joel Lonbeck <joel@neutrinographics.com>
+
+crystal: 0.26.1
+
+license: MIT
+
+dependencies:
+  lib_glut:
+    github: neutrinog/lib_glut
+    branch: master
