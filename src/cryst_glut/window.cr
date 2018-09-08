@@ -240,7 +240,7 @@ module CrystGLUT
     end
 
     # checks if the key is down
-    def is_key_down(key_code : Int32) : Bool
+    def is_key_down(key_code : Int32 | UInt8) : Bool
         return contains(@key_down, key_code)
     end
 
