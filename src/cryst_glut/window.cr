@@ -244,9 +244,19 @@ module CrystGLUT
         return contains(@key_down, key_code)
     end
 
+    # returns the keys that are currently down
+    def get_keys_down
+      return @key_down.clone
+    end
+
     # checks if the mouse key is down
     def is_mouse_down(key_code : Int32) : Bool
       return contains(@mouse_down, key_code)
+    end
+
+    # returns the mouse buttons that are currently
+    def get_mouse_buttons_down
+      return @mouse_down.clone
     end
 
     # returns the x coordinate of the mouse
