@@ -3,7 +3,7 @@ require "lib_glut"
 module CrystGLUT
 
   class Window
-    NUM_KEYCODES = 256
+    NUM_KEYCODES = 1256
 
     # context boxes for passing closure to c libraries
     @display_box : Pointer(Void)?
@@ -205,14 +205,18 @@ module CrystGLUT
       end
 
       on_special_keyboard do |key, x, y|
-        if !contains(@key_down, key)
-          @key_down.push(key)
+        # TRICKY: avoid keyboard code collisions
+        special_key = key + 1_000
+        if !contains(@key_down, special_key)
+          @key_down.push(special_key)
         end
       end
 
       on_special_keyboard_up do |key, x, y|
-        if contains(@key_down, key)
-          @key_down.delete(key)
+        # TRICKY: avoid keyboard code collisions
+        special_key = key + 1_000
+        if contains(@key_down, special_key)
+          @key_down.delete(special_key)
         end
       end
 
