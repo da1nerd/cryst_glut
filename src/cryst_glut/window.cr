@@ -280,7 +280,11 @@ module CrystGLUT
 
     # Enables or disables the cursor icon
     def enable_cursor(enabled : Bool)
-      LibGLUT.set_cursor(LibGLUT::CURSOR_NONE)
+      if enabled
+          LibGLUT.set_cursor(LibGLUT::CURSOR_INHERIT)
+      else
+        LibGLUT.set_cursor(LibGLUT::CURSOR_NONE)
+      end
     end
 
     # Changes the icon of the cursor. Look up glutSetCursor for valid values.
