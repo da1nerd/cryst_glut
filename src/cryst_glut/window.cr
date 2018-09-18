@@ -273,6 +273,21 @@ module CrystGLUT
       return @mouse_y
     end
 
+    # sets the position of the mouse within the window
+    def set_mouse_position(x : Float32, y : Float32)
+      LibGLUT.warp_pointer(x, y)
+    end
+
+    # Enables or disables the cursor icon
+    def enable_cursor(enabled : Boolean)
+      LibGLUT.set_cursor(LibGLUT::CURSOR_NONE)
+    end
+
+    # Changes the icon of the cursor. Look up glutSetCursor for valid values.
+    def set_cursor(cursor : LibC::Int)
+      LibGLUT.set_cursor(cursor)
+    end
+
     # Returns the width of the window
     def get_width : Int32
       return LibGLUT.get(LibGLUT::WINDOW_WIDTH)
@@ -282,7 +297,8 @@ module CrystGLUT
     def get_height : Int32
       return LibGLUT.get(LibGLUT::WINDOW_HEIGHT)
     end
-#GLUT_ACTION_ON_WINDOW_CLOSE
+
+    # Checks if the window has requested to close
     def is_close_requested : Bool
       @close_requested
     end
